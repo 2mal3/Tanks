@@ -1,0 +1,69 @@
+name: Build
+
+on:
+  push:
+    tags:
+      - 'v*.*.*'
+
+permissions:
+  contents: write
+
+jobs:
+  create-release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          name: Tanks ${{ github.ref_name }}
+
+
+  build:
+    needs:
+      - create-release
+    strategy:
+        matrix:
+            os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+        with:
+          submodules: true
+          token: ${{ secrets.PA_TOKEN }}
+
+      - name: Create Python Requirements File (Unix)
+        if: startsWith(matrix.os, 'ubuntu') || startsWith(matrix.os, 'macos')
+        run: |
+          cp requirements.lock requirements.txt
+          sed -i '/-e file:./d' requirements.txt
+      - name: Create Python Requirements File (Windows)
+        if: startsWith(matrix.os, 'windows')
+        run: |
+          copy requirements.lock requirements.txt
+          (Get-Content requirements.txt) | Where-Object { $_ -notmatch '-e file:' } | Set-Content requirements.txt
+
+      - name: Set Up Python With Cache
+        uses: actions/setup-python@v5
+        with:
+          cache: pip
+
+      - name: Install Python Requirements
+        run: pip install -r requirements.txt
+
+      - name: Cache Pyinstaller Files
+        uses: actions/cache@v4
+        with:
+          path: build
+          key: ${{ runner.os }}-pyinstaller
+
+      - name: Build Binary
+        run: pyinstaller tanks/main.py --onefile --noconsole --name tanks-${{ runner.os }} --add-data tanks/assets:tanks/assets
+
+      - name: Upload to Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ github.ref_name }}
+          files: dist/tanks*

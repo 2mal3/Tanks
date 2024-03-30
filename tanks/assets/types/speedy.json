@@ -1,0 +1,17 @@
+{
+    "health": 6,
+    "max_speed": 5,
+    "acceleration": 1,
+    "turret_speed": 3,
+    "cooldown": 140,
+    "bullet_speed": 7,
+    "bullet_damage": 1,
+    "image_type": 2,
+    "body_scale": 0.8,
+    "turret_scale": 0.7,
+    "turret_offset": [0, 0],
+    "drift": 0.8,
+    "reload_speed" : 30,
+    "max_shells" : 10,
+    "name" : "Speedy"
+}

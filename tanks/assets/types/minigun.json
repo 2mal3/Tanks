@@ -1,0 +1,17 @@
+{
+    "health": 8,
+    "max_speed": 2,
+    "acceleration": 0.09,
+    "turret_speed": 1.5,
+    "cooldown": 100,
+    "bullet_speed": 8,
+    "bullet_damage": 1,
+    "image_type": 3,
+    "body_scale": 0.9,
+    "turret_scale": 0.8,
+    "turret_offset": [0, -8],
+    "drift": 0.95,
+    "reload_speed" : 10,
+    "max_shells" : 35,
+    "name" : "Minigun"
+}

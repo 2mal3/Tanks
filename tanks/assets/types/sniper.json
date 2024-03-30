@@ -1,0 +1,17 @@
+{
+    "health": 4,
+    "max_speed": 3,
+    "acceleration": 1,
+    "turret_speed": 1.5,
+    "cooldown": 500,
+    "bullet_speed": 40,
+    "bullet_damage": 4,
+    "image_type": 4,
+    "body_scale": 0.9,
+    "turret_scale": 0.8,
+    "turret_offset": [0, -12],
+    "drift": 0.8,
+    "reload_speed" : 50,
+    "max_shells" : 3,
+    "name" : "Sniper"
+}

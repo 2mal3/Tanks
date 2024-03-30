@@ -1,0 +1,3 @@
+[submodule "tanks/assets/images/proprietary"]
+	path = tanks/assets/images/proprietary
+	url = https://github.com/2mal3/Tanks-proprietary

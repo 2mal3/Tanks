@@ -1,0 +1,17 @@
+{
+    "health": 8,
+    "max_speed": 3,
+    "acceleration": 0.1,
+    "turret_speed": 2,
+    "cooldown": 300,
+    "bullet_speed": 25,
+    "bullet_damage": 3,
+    "image_type": 1,
+    "body_scale": 1.1,
+    "turret_scale": 0.9,
+    "turret_offset": [0, 10],
+    "drift": 0.9,
+    "reload_speed" : 60,
+    "max_shells" : 5,
+    "name" : "Tank"
+}

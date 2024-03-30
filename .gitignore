@@ -1,0 +1,12 @@
+# Editor files
+.idea/
+.vscode/
+**/.DS_Store
+
+# Pyhton
+__pycache__/
+
+# PyInstaller
+dist/
+build/
+*.spec
